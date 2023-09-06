@@ -43,6 +43,8 @@ y = expression
 y1=expressionm
 y2=m2expression
 
+x=["10",'11','12','13','14A','14B','14C','14D']
+
 # Plot data
 fig, ax = plt.subplots()
 
@@ -50,10 +52,14 @@ ax.plot( x, y, label="female")
 ax.plot(x,y1,label="male")
 ax.plot(x,y2,label="2*male")
 
+ax.set_title( "sisA(FBtr0073461)" )
+ax.set_xlabel("developmental stage")
+ax.set_ylabel("mRNA abundance (RPKM)")
+ax.legend()
 
 
 plt.tight_layout()
-fig.savefig( "sisA-f+m+2m.png" )
+fig.savefig( "sisA-f+m+2m(annotated).png" )
 plt.show()
 
 
