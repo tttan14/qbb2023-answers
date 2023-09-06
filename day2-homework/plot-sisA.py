@@ -40,18 +40,16 @@ x = samples[cols]
 y = expression
 y1=expressionm
 
-#x=["10",'11','12','13','14A','14B','14C','14D']
-
 # Plot data
 fig, ax = plt.subplots()
 
 ax.plot( x, y, label="female")
-#ax.plot(x,y1,label="male")
+ax.plot(x,y1,label="male")
 
 
 
 plt.tight_layout()
-fig.savefig( "sisA-female.png" )
+fig.savefig( "sisA-f+m.png" )
 plt.show()
 
 
