@@ -3,6 +3,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+
+f=open("all_annotated.csv")
+lines=f.readlines()
+
+
 transcripts = np.loadtxt( "all_annotated.csv", delimiter=",", usecols=0, dtype="<U30", skiprows=1 )
 print( "transcripts: ", transcripts[0:5] )
 
@@ -33,8 +39,8 @@ for i in range(len(samples)):
 # Subset data of interest
 expression = data[row, cols]
 expressionm=data[row,colm]
-expressionm=np.array(expressionm)
-m2expression=2*expressionm
+
+m2expression=2*np.array(expressionm)
 
 
 # Prepare data
@@ -55,15 +61,16 @@ ax.plot(x,y2,label="2*male")
 ax.set_title( "sisA(FBtr0073461)" )
 ax.set_xlabel("developmental stage")
 ax.set_ylabel("mRNA abundance (RPKM)")
+plt.xticks(rotation=90)
 ax.legend()
 
 
 plt.tight_layout()
-fig.savefig( "sisA-f+m+2m(annotated).png" )
+fig.savefig( "sisA-f+m+2man.png" )
 plt.show()
 
 
-
+f.close()
 
 
 
