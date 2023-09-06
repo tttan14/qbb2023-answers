@@ -33,23 +33,27 @@ for i in range(len(samples)):
 # Subset data of interest
 expression = data[row, cols]
 expressionm=data[row,colm]
-print("x",expressionm)
+expressionm=np.array(expressionm)
+m2expression=2*expressionm
+
 
 # Prepare data
 x = samples[cols]
 y = expression
 y1=expressionm
+y2=m2expression
 
 # Plot data
 fig, ax = plt.subplots()
 
 ax.plot( x, y, label="female")
 ax.plot(x,y1,label="male")
+ax.plot(x,y2,label="2*male")
 
 
 
 plt.tight_layout()
-fig.savefig( "sisA-f+m.png" )
+fig.savefig( "sisA-f+m+2m.png" )
 plt.show()
 
 
