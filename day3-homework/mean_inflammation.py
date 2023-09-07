@@ -6,7 +6,7 @@ fname=sys.argv[1]
 data=open(fname)
 lines=data.readlines()
 
-patientID=10
+patientID="10"
 
 def mean_pa(pa_id): #function that calculates the mean for specific patient
 	fla_data=pa_dict[str(pa_id)] #dictionary uses []
