@@ -42,11 +42,27 @@ def wright_fisher(start_AlFreq, pop_size):
 	return new_AlFreq_list
 
 al_list=wright_fisher(0.5,1000)
-print("Number of generation to fixation:",len(al_list))
+#print("Number of generation to fixation:",len(al_list))
 
+#Ex1 pt2
 
+fig,ax=plt.subplots()
 
-#fig,ax=plt.subplots()
+n=1
+x_traject=[]
+for j in range(len(al_list)):
+	n+=1
+	x_traject.append(n)
+
+ax.plot(x_traject,al_list)
+
+ax.set_xlabel("Generations")
+ax.set_ylabel("Allele frequency")
+fig.savefig("WrightFisher-Ex1.png")
+
+plt.show()
+
+######################################################################
 
 #Ex2 pt1
 # for i in range(30):
