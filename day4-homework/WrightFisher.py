@@ -41,4 +41,24 @@ def wright_fisher(start_AlFreq, pop_size):
 
 	return new_AlFreq_list
 
-print(wright_fisher(0.5,100))
+fig,ax=plt.subplots()
+
+for i in range(30):
+	traject=[]
+	x_traject=wright_fisher(0.5,100)
+	y_traject=[]
+	n=1
+	for j in range(len(x_traject)):
+		n+=1
+		y_traject.append(n)
+
+	ax.plot(y_traject,x_traject)
+
+ax.set_xlabel("Generations")
+ax.set_ylabel("Allele frequency")
+fig.savefig("WrightFisher-Ex2.png")
+
+plt.show()
+
+
+
