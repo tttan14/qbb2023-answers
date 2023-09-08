@@ -1,0 +1,8 @@
+Exercise 2 histogram:
+The histogram is skewed to the right. With most occurrences clustered around 200 to 400 bins. Most populations took smaller number of generations to reach fixation. Population size, allele frequency, and the number of trials we performed could affect the distribution. With fixed allele frequency and population size, most populations take less generations to fix the allele than the mean number of generations
+
+Exercise 3 1st assumption:
+With fixed allele frequency, larger population seems to correlate with larger average number of generations to fixation. In this model, we are assuming an evolutionarily neutral condition. Nature is not so variants like mutation or genetic drift could change allele frequency.
+
+Exercise 3 2st assumption:
+With fixed population size, larger allele frequency seems to correlate with overall trend of larger average number of generations to fixation. Again, we are assuming an evolutionarily neutral condition. In nature, the population size is not stable which could vary the distribution.
