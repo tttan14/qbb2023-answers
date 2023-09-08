@@ -24,7 +24,7 @@ import matplotlib.pyplot as plt
 
 
 #######################################################################
-#Ex1
+#Ex1 pt1
 
 def wright_fisher(start_AlFreq, pop_size):
 	
@@ -41,7 +41,12 @@ def wright_fisher(start_AlFreq, pop_size):
 
 	return new_AlFreq_list
 
-fig,ax=plt.subplots()
+al_list=wright_fisher(0.5,1000)
+print("Number of generation to fixation:",len(al_list))
+
+
+
+#fig,ax=plt.subplots()
 
 #Ex2 pt1
 # for i in range(30):
@@ -106,30 +111,30 @@ fig,ax=plt.subplots()
 # plt.show()
 
 ###########################################################
-# #Ex3 pt2
+#Ex3 pt2
 
-salf_input=[0.1,0.2,0.3,0.4,0.5]
-num_fix=[]
-aver_fix=0
-aver_plot=[]
-for i in range(5):
-	al_freq=[]
-	num_fix=[]
-	sum=0
-	for j in range(10):
-		al_freq.append(wright_fisher(salf_input[i],1000))
-		num_fix.append(len(al_freq[0])) #num fix one time
-		al_freq=[]
+# salf_input=[0.1,0.2,0.3,0.4,0.5]
+# num_fix=[]
+# aver_fix=0
+# aver_plot=[]
+# for i in range(5):
+# 	al_freq=[]
+# 	num_fix=[]
+# 	sum=0
+# 	for j in range(10):
+# 		al_freq.append(wright_fisher(salf_input[i],1000))
+# 		num_fix.append(len(al_freq[0])) #num fix one time
+# 		al_freq=[]
 
-	num_fix=np.array(num_fix) #num to fix for 60 times
-	aver_fix=np.mean(num_fix) #average of the 60 times for one pop size
-	aver_plot.append(aver_fix) #list of 5 pop size with average num to fix 
+# 	num_fix=np.array(num_fix) #num to fix for 60 times
+# 	aver_fix=np.mean(num_fix) #average of the 60 times for one pop size
+# 	aver_plot.append(aver_fix) #list of 5 pop size with average num to fix 
 
-ax.scatter(salf_input,aver_plot)
-ax.set_xlabel("Allele frequencies")
-ax.set_ylabel("Average number to fixations (10 trials)")
-fig.savefig("WrightFisher-Ex3pt2.png")
-plt.show()
+# ax.scatter(salf_input,aver_plot)
+# ax.set_xlabel("Allele frequencies")
+# ax.set_ylabel("Average number to fixations (10 trials)")
+# fig.savefig("WrightFisher-Ex3pt2.png")
+# plt.show()
 
 
 
