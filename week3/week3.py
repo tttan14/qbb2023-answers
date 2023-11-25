@@ -102,18 +102,18 @@ seq1=str()
 seq2=str()
 
 gap_count=0
-i=len(sequence1)-1
-j=len(sequence2)-1
+# i=len(sequence1)-1
+# j=len(sequence2)-1
 alignment_score=0
 
-def populate_matrices(sequence1, sequence2, scoring_matrix, gap_penalty, F_matrix, TB_matrix):
+def populate_matrices(sequence1, sequence2, score_matrix, gap_penalty, F_matrix, TB_matrix):
     m, n = len(sequence1), len(sequence2)
 
     for i in range(1, m + 1):
         for j in range(1, n + 1):
-            match = F[i - 1][j - 1] + scoring_matrix.loc[sequence1[i - 1], sequence2[j - 1]]
-            gap_seq1 = F[i - 1][j] + gap_penalty
-            gap_seq2 = F[i][j - 1] + gap_penalty
+            match = F_matrix[i - 1][j - 1] + score_matrix.loc[sequence1[i - 1], sequence2[j - 1]]
+            gap_seq1 = F_matrix[i - 1][j] + gap_penalty
+            gap_seq2 = F_matrix[i][j - 1] + gap_penalty
 
             max_score = max(match, gap_seq1, gap_seq2)
 
@@ -149,9 +149,29 @@ def populate_matrices(sequence1, sequence2, scoring_matrix, gap_penalty, F_matri
 # 			seq1+=sequence1[i]
 # 			seq2+='-'
 # 			alignment_score+=F_matrix[i,j]
+def traceback_alignment(TB_matrix, sequence1, sequence2):
+    m, n = len(TB_matrix) - 1, len(TB_matrix[0]) - 1
+    alignment_seq1, alignment_seq2 = "", ""
+
+    while m > 0 or n > 0:
+        if m > 0 and n > 0 and TB_matrix[m][n] == 'd':
+            alignment_seq1 = sequence1[m - 1] + alignment_seq1
+            alignment_seq2 = sequence2[n - 1] + alignment_seq2
+            m -= 1
+            n -= 1
+        elif m > 0 and TB_matrix[m][n] == 'u':
+            alignment_seq1 = sequence1[m - 1] + alignment_seq1
+            alignment_seq2 = '-' + alignment_seq2
+            m -= 1
+        elif n > 0 and TB_matrix[m][n] == 'l':
+            alignment_seq1 = '-' + alignment_seq1
+            alignment_seq2 = sequence2[n - 1] + alignment_seq2
+            n -= 1
+
+    return alignment_seq1, alignment_seq2
 
 F_matrix, TB_matrix = initialize_matrices(len(sequence1), len(sequence2))
-F_matrix, TB_matrix = populate_matrices(sequence1, sequence2, scoring_matrix, gap_penalty, F_matrix, TB_matrix)
+F_matrix, TB_matrix = populate_matrices(sequence1, sequence2, score_matrix, gap_penalty, F_matrix, TB_matrix)
 
 aligned_seq1, aligned_seq2 = traceback_alignment(TB_matrix, sequence1, sequence2)
 
@@ -160,8 +180,8 @@ gaps_seq1 = aligned_seq1.count('-')
 gaps_seq2 = aligned_seq2.count('-')
 alignment_score = F_matrix[len(sequence1)][len(sequence2)]
 
-print('sequence1: ',alignment_seq1)
-print('sequence2: ',alignment_seq2)
+print('sequence1: ',aligned_seq1)
+print('sequence2: ',aligned_seq2)
 print('gap_count: ',gap_count)
 print('alignment_score: ',alignment_score)
 
